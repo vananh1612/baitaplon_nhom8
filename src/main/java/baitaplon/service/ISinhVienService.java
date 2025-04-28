@@ -1,10 +1,20 @@
 package baitaplon.service;
 
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 import baitaplon.dto.SinhVienDTO;
 
-@Service
 public interface ISinhVienService {
 	SinhVienDTO save(SinhVienDTO sv);
+
+	SinhVienDTO addSinhVien(SinhVienDTO sv);
+
+	List<String> getAllID();
+
+	List<SinhVienDTO> findAll();
+
+	SinhVienDTO editSinhVien(SinhVienDTO sinhVienDTO);
+
+	SinhVienDTO findById(String id);
 }

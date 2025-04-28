@@ -9,21 +9,40 @@ import org.mapstruct.factory.Mappers;
 import baitaplon.dto.SinhVienDTO;
 import baitaplon.model.sinhvien;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, builder = @Builder(disableBuilder = true))
 public interface ISinhVienMapper {
-	ISinhVienMapper INSTANCE = Mappers.getMapper(ISinhVienMapper.class);
+	public static sinhvien convertToEntity(SinhVienDTO dto) {
+		sinhvien entity = new sinhvien();
+		entity.setID(dto.getID());
+		entity.setMaSinhVien(dto.getMa_sinh_vien());
+		entity.setHoTen(dto.getHo_ten());
+		entity.setNgaySinh(dto.getNgay_sinh());
+		entity.setEmail(dto.getEmail());
+		entity.setSdt(dto.getSdt());
+		entity.setDiaChi(dto.getDia_chi());
+		entity.setHeDT(dto.getHedt());
+		entity.setNamHoc(dto.getNam_hoc());
+		entity.setID_lop_thuocDB(dto.getID_lop());
+		return entity;
+	}
 
-	@Mapping(source = "ID", target = "ID")
-	@Mapping(source = "ho_ten", target = "hoTen")
-	@Mapping(source = "ngay_sinh", target = "ngaySinh")
-	@Mapping(source = "email", target = "email")
-	@Mapping(source = "sdt", target = "sdt")
-	@Mapping(source = "dia_chi", target = "diaChi")
-	@Mapping(source = "hedt", target = "heDT")
-	@Mapping(source = "nam_hoc", target = "namHoc")
-	@Mapping(source = "ID_nganh", target = "ID_nganh")
-	@Mapping(source = "ID_lop", target = "ID_lop")
-	@Mapping(source = "ID_khoa", target = "ID_khoa")
+	public static SinhVienDTO convertToDTO(sinhvien entity) {
+		SinhVienDTO dto = new SinhVienDTO();
+		dto.setID(entity.getID());
+		dto.setMa_sinh_vien(entity.getMaSinhVien());
+		dto.setHo_ten(entity.getHoTen());
+		dto.setNgay_sinh(entity.getNgaySinh());
+		dto.setEmail(entity.getEmail());
+		dto.setSdt(entity.getSdt());
+		dto.setDia_chi(entity.getDiaChi());
+		dto.setHedt(entity.getHeDT());
+		dto.setNam_hoc(entity.getNamHoc());
+		// lấy từ object khoa nếu cần (khi hiển thị)
+		if (entity.getID_lop() != null) {
+			dto.setID_lop(entity.getID_lop().getID());
+		} else if (entity.getID_lop_thuocDB() != null) {
+			dto.setID_lop(entity.getID_lop_thuocDB());
+		}
+		return dto;
+	}
 
-	sinhvien toEntity(SinhVienDTO sinhVienDTO);
 }

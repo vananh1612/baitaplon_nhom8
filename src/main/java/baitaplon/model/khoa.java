@@ -23,13 +23,7 @@ public class khoa {
 	private String tenKhoa;
 
 
-	@OneToMany(mappedBy = "ID_khoa", cascade = CascadeType.ALL)
-	private List<nganh> nganhList;
-
-	@OneToMany(mappedBy = "ID_khoa", cascade = CascadeType.ALL)
-	private List<sinhvien> sinhvienList;
-
-
+	
 
 	public String getID() {
 		return ID;
@@ -51,21 +45,7 @@ public class khoa {
 
 	
 
-	public List<nganh> getNganhList() {
-		return nganhList;
-	}
-
-	public void setNganhList(List<nganh> nganhList) {
-		this.nganhList = nganhList;
-	}
-
-	public List<sinhvien> getSinhvienList() {
-		return sinhvienList;
-	}
-
-	public void setSinhvienList(List<sinhvien> sinhvienList) {
-		this.sinhvienList = sinhvienList;
-	}
+	
 	
 
 }

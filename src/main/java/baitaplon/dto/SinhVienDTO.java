@@ -13,6 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class SinhVienDTO {
 	private String ID;
+	private String ma_sinh_vien;
 	private String ho_ten;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngay_sinh;
@@ -22,8 +23,6 @@ public class SinhVienDTO {
 	private String hedt;
 	@DateTimeFormat(pattern = "yyyy")
 	private Date nam_hoc;
-	private String ID_nganh;
-	private String ID_khoa;
 	private String ID_lop;
 
 	public String getID() {
@@ -73,6 +72,14 @@ public class SinhVienDTO {
 	public void setDia_chi(String dia_chi) {
 		this.dia_chi = dia_chi;
 	}
+	
+	public String getMa_sinh_vien() {
+		return ma_sinh_vien;
+	}
+
+	public void setMa_sinh_vien(String ma_sinh_vien) {
+		this.ma_sinh_vien = ma_sinh_vien;
+	}
 
 	public String getHedt() {
 		return hedt;
@@ -90,21 +97,7 @@ public class SinhVienDTO {
 		this.nam_hoc = nam_hoc;
 	}
 
-	public String getID_nganh() {
-		return ID_nganh;
-	}
-
-	public void setID_nganh(String iD_nganh) {
-		ID_nganh = iD_nganh;
-	}
-
-	public String getID_khoa() {
-		return ID_khoa;
-	}
-
-	public void setID_khoa(String iD_khoa) {
-		ID_khoa = iD_khoa;
-	}
+	
 
 	public String getID_lop() {
 		return ID_lop;

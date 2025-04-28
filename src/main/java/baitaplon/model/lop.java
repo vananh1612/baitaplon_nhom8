@@ -28,6 +28,16 @@ public class lop {
     @ManyToOne
 	@JoinColumn(name = "ID_nganh", insertable = false, updatable = false)
 	private nganh ID_nganh;
+	@Column(name = "ID_nganh")
+	private String ID_nganh_thuocDB;
+
+	public String getID_nganh_thuocDB() {
+		return ID_nganh_thuocDB;
+	}
+
+	public void setID_nganh_thuocDB(String iD_nganh_thuocDB) {
+		ID_nganh_thuocDB = iD_nganh_thuocDB;
+	}
 
 	public String getID() {
 		return ID;

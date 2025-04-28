@@ -18,7 +18,8 @@ public class sinhvien {
 	@Id
 	@Column(name = "ID")
 	private String ID;
-
+	@Column(name = "MaSinhVien")
+	private String maSinhVien;
 	@Column(name = "HoTen")
 	private String hoTen;
 
@@ -36,27 +37,38 @@ public class sinhvien {
 	private String diaChi;
 
 	@Column(name = "HeDT")
-	@Temporal(TemporalType.DATE)
-	private Date heDT;
+	
+	private String heDT;
 
 	@Column(name = "NamHoc")
 	@Temporal(TemporalType.DATE)
 	private Date namHoc;
 
-	@ManyToOne
-	@JoinColumn(name = "ID_nganh", insertable = false, updatable = false)
-	private nganh ID_nganh;
-
-
+	
 	@ManyToOne
 	@JoinColumn(name = "ID_lop", insertable = false, updatable = false)
 	private lop ID_lop;
-	@ManyToOne
-	@JoinColumn(name = "ID_khoa", insertable = false, updatable = false)
-	private khoa ID_khoa;
+	@Column(name = "ID_lop")
+	private String ID_lop_thuocDB;
+
+	public String getID_lop_thuocDB() {
+		return ID_lop_thuocDB;
+	}
+
+	public void setID_lop_thuocDB(String iD_lop_thuocDB) {
+		ID_lop_thuocDB = iD_lop_thuocDB;
+	}
 
 	public String getID() {
 		return ID;
+	}
+
+	public String getMaSinhVien() {
+		return maSinhVien;
+	}
+
+	public void setMaSinhVien(String maSinhVien) {
+		this.maSinhVien = maSinhVien;
 	}
 
 	public void setID(String iD) {
@@ -103,11 +115,11 @@ public class sinhvien {
 		this.diaChi = diaChi;
 	}
 
-	public Date getHeDT() {
+	public String getHeDT() {
 		return heDT;
 	}
 
-	public void setHeDT(Date heDT) {
+	public void setHeDT(String heDT) {
 		this.heDT = heDT;
 	}
 
@@ -119,21 +131,6 @@ public class sinhvien {
 		this.namHoc = namHoc;
 	}
 
-	public nganh getID_nganh() {
-		return ID_nganh;
-	}
-
-	public void setID_nganh(nganh iD_nganh) {
-		ID_nganh = iD_nganh;
-	}
-
-	public khoa getID_khoa() {
-		return ID_khoa;
-	}
-
-	public void setID_khoa(khoa iD_khoa) {
-		ID_khoa = iD_khoa;
-	}
 
 	public lop getID_lop() {
 		return ID_lop;

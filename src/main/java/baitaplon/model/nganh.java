@@ -22,8 +22,7 @@ public class nganh {
 	@Column(name = "TenNganh")
     private String tenNganh;
 
-    @OneToMany(mappedBy = "ID_nganh", cascade = CascadeType.ALL)
-    private List<sinhvien> sinhvienList;
+ 
 
     @ManyToOne
 	@JoinColumn(name = "ID_khoa", insertable = false, updatable = false)
@@ -32,9 +31,19 @@ public class nganh {
 	public String getID() {
 		return ID;
 	}
+	@Column(name = "ID_khoa")
+	private String ID_khoa_thuocDB;
 
 	public void setID(String iD) {
 		ID = iD;
+	}
+
+	public String getID_khoa_thuocDB() {
+		return ID_khoa_thuocDB;
+	}
+
+	public void setID_khoa_thuocDB(String iD_khoa_thuocDB) {
+		ID_khoa_thuocDB = iD_khoa_thuocDB;
 	}
 
 	public String getTenNganh() {
@@ -45,13 +54,6 @@ public class nganh {
 		this.tenNganh = tenNganh;
 	}
 
-	public List<sinhvien> getSinhvienList() {
-		return sinhvienList;
-	}
-
-	public void setSinhvienList(List<sinhvien> sinhvienList) {
-		this.sinhvienList = sinhvienList;
-	}
 
 	public khoa getID_khoa() {
 		return ID_khoa;

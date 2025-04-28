@@ -7,15 +7,31 @@ import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import baitaplon.dto.LopDTO;
+import baitaplon.dto.NganhDTO;
 import baitaplon.model.lop;
+import baitaplon.model.nganh;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, builder = @Builder(disableBuilder = true))
 public interface ILopMapper {
-	ILopMapper INSTANCE = Mappers.getMapper(ILopMapper.class);
+	public static lop convertToEntity(LopDTO dto) {
+		lop entity = new lop();
+		entity.setID(dto.getID());
+		entity.setTenLop(dto.getTen_lop());
+		entity.setID_nganh_thuocDB(dto.getID_nganh());
 
-	@Mapping(source = "ID", target = "ID")
-	@Mapping(source = "ten_lop", target = "tenLop")
-	@Mapping(source = "ID_nganh", target = "ID_nganh")
+		return entity;
+	}
 
-	lop toEntity(LopDTO lopDTO);
+	public static LopDTO convertToDTO(lop entity) {
+		LopDTO dto = new LopDTO();
+		dto.setID(entity.getID());
+		dto.setTen_lop(entity.getTenLop());
+
+		// lấy từ object khoa nếu cần (khi hiển thị)
+		if (entity.getID_nganh() != null) {
+			dto.setID_nganh(entity.getID_nganh().getID());
+		} else if (entity.getID_nganh_thuocDB() != null) {
+			dto.setID_nganh(entity.getID_nganh_thuocDB());
+		}
+		return dto;
+	}
 }
